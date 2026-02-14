@@ -1,14 +1,23 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Mangás</title>
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+    <header>
+        <h1>Minha Coleção de Mangás</h1>
+    </header>
+    <main>
+        <div class="content-container">
+            <content>
+                <!-- Cards serão adicionados dinamicamente pelo JavaScript -->
+            </content>
+        </div>
+    </main>
+    <script defer type="module" src="data.js"></script>
+    <script defer type="module" src="main.js"></script>
 </body>
 </html>
