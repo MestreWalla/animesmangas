@@ -12,13 +12,15 @@
 <body>
     <header>
         <div class="header-content">
-            <a href="index.html" class="back-button">&#x2190; Back</a>
+            <a href="index.html" class="back-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </a>
             <h1 id="manga-title"></h1>
             <div class="controls">
                 <div class="filter-options">
-                    <button class="filter-button active" data-filter="all">All</button>
-                    <button class="filter-button" data-filter="Adquirido">Acquired</button>
-                    <button class="filter-button" data-filter="Falta">Missing</button>
+                    <button class="filter-button active" data-filter="all">Todos</button>
+                    <button class="filter-button" data-filter="Adquirido">Adquiridos</button>
+                    <button class="filter-button" data-filter="Falta">Faltantes</button>
                 </div>
                 <button id="theme-toggle" class="theme-button">
                     <span class="theme-icon"></span>
@@ -28,7 +30,7 @@
     </header>
     <main>
         <div class="synopsis-container">
-            <h2>Synopsis</h2>
+            <h2>Sinopse</h2>
             <p id="manga-synopsis"></p>
         </div>
         <div class="card-grid" id="volumes-container">

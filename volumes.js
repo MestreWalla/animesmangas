@@ -23,14 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (filteredVolumes.length === 0) {
-                volumesContainer.innerHTML = `<p class="no-results">No matching volumes found.</p>`;
+                volumesContainer.innerHTML = `<p class=\"no-results\">Nenhum volume correspondente encontrado.</p>`;
                 return;
             }
 
             filteredVolumes.forEach(volume => {
                 const card = document.createElement('div');
                 card.className = `card ${volume.status.toLowerCase()}`;
-                // The card is not clickable, so let's add the disabled class to prevent hover effects
                 if (volume.status === 'Falta') {
                     card.classList.add('disabled');
                 }
@@ -75,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     } else {
-        mainContent.innerHTML = `<p class="no-results">Manga not found. Please return to the <a href="index.html">home page</a>.</p>`;
-        document.getElementById('manga-title').textContent = 'Not Found';
+        mainContent.innerHTML = `<p class=\"no-results\">Manga não encontrado. Por favor, retorne à <a href=\"index.html\">página inicial</a>.</p>`;
+        document.getElementById('manga-title').textContent = 'Não encontrado';
     }
 });

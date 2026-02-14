@@ -4,6 +4,7 @@ export default {
             "nome": "Solo Leveling",
             "editora": "Panini",
             "sinopsis": "Solo Leveling conta a história de Sung Jin-Woo, um caçador de monstros de baixo nível que adquire um poder extraordinário para subir de nível e se tornar o caçador mais forte do mundo.",
+            "wallpaper": "https://wallpapers.com/images/hd/solo-leveling-background-tfur0tt8ch9ltkhv.jpg",
             "volumes": [
                 {
                     "volume": "Volume 01",
@@ -43,30 +44,30 @@ export default {
                 {
                     "volume": "Volume 08",
                     "status": "Falta",
-                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_ucq4mc16sp29b9qtopqjk1bt1q/-S897-FWEBP",
+                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_ucq4mc16sp29b9qtopqjk1bt1q/-S897-FWEBP"
                 },
                 {
                     "volume": "Volume 09",
                     "status": "Falta",
-                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_3gp4jlh49d0vv6h9csgvjdv777/-S897-FWEBP",
+                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_3gp4jlh49d0vv6h9csgvjdv777/-S897-FWEBP"
                 },
                 {
                     "volume": "Volume 10",
                     "status": "Falta",
-                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_a1ffgbto5l19982a7jt10bru2g/-S897-FWEBP",
+                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_a1ffgbto5l19982a7jt10bru2g/-S897-FWEBP"
                 },
                 {
                     "volume": "Volume 11",
                     "status": "Falta",
-                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_j3kffgjuad30h1rplol8n11857/-S897-FWEBP",
-                },
-
+                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_j3kffgjuad30h1rplol8n11857/-S897-FWEBP"
+                }
             ]
         },
         {
             "nome": "Frieren E A Jornada Para O Além",
             "editora": "Panini",
             "sinopsis": "Frieren é uma elfa maga que fez parte de um grupo de heróis que derrotou o Rei Demônio. Após a vitória, ela promete se reencontrar com seus companheiros, mas, sendo uma elfa, sua percepção do tempo é muito diferente da dos humanos. Anos depois, ela embarca em uma nova jornada para entender melhor a si mesma e o significado das relações que construiu.",
+            "wallpaper": "https://4kwallpapers.com/images/wallpapers/frieren-beyond-5120x2880-15157.jpeg",
             "volumes": [
                 {
                     "volume": "Volume 01",
@@ -132,13 +133,14 @@ export default {
                     "volume": "Volume 13",
                     "status": "Adquirido",
                     "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_29c1s4th553br51sjv2ssgru7e/-S897-FWEBP"
-                },
+                }
             ]
         },
         {
             "nome": "Your Name",
             "editora": "JBC",
             "sinopsis": "Mitsuha, uma estudante do ensino médio, anseia por viver a vida de um garoto na movimentada cidade de Tóquio. Taki, um estudante em Tóquio, tem um sonho estranho onde ele é uma garota em uma cidade pequena no campo. Seus destinos se entrelaçam quando eles descobrem que podem trocar de corpo.",
+            "wallpaper": "https://wallpapers.com/images/featured/kimi-no-na-wa-b5qwq6u6ea6qfd94.jpg",
             "volumes": [
                 {
                     "volume": "Edição única",
@@ -164,7 +166,140 @@ export default {
                     "volume": "Novel: Another side earthbound",
                     "status": "Adquirido",
                     "imagem": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT7KYN1RZLojBv4AZRUMoFnHdcALbEYY1yjBflDuCa-j0Zg8x-2"
-
+                }
+            ]
+        },
+        {
+            "nome": "O Pecado Original De Takopi",
+            "editora": "Panini",
+            "sinopsis": "Takopi é um felício que vem ao planeta Terra para espalhar a alegria. Ele faz de tudo para recuperar o sorriso de Shizuka, a garota que o salvou, mas as situações em que ela vive são impressionantes. Algo que o inocente Takopi jamais seria capaz de imaginar. Qual será o pecado que ele vai cometer por simplesmente desejar que ela sorrisse…?!",
+            "wallpaper": "https://fwmedia.fandomwire.com/wp-content/uploads/2025/08/01235444/Takopis-Original-Sin.jpg",
+            "volumes": [
+                {
+                    "volume": "Volume 01",
+                    "status": "Adquirido",
+                    "imagem": "https://m.media-amazon.com/images/I/911ud1gtWQL.jpg"
+                },
+                {
+                    "volume": "Volume 02",
+                    "status": "Adquirido",
+                    "imagem": "https://m.media-amazon.com/images/I/812IOOAkM1L._AC_UF1000,1000_QL80_.jpg"
+                }
+            ],
+        },
+        {
+            "nome": "Mirai Nikki",
+            "editora": "Panini",
+            "sinopsis": "Yukiteru é um garoto de 14 anos que poderia ser considerado estranho. Com dificuldade para fazer amigos, para ele a vida não passa de um grande reality show, onde ele é mais um espectador. Tudo que ele vê, resolve anotar em seu celular, fazendo dele seu diário. Mais estranhas ainda são as atitudes do garoto, que tem como amigos imaginários um deus dominador do tempo e espaço, denominado Deus Ex-Machina, e sua assistente, Muru-Muru. No entanto, não era realmente só imaginação… Yukiteru ganha desse deus o poder de prever o futuro com seu celular, tornando-se esse então o seu diário do futuro. No entanto, descobre-se depois que para esse presente há um outro lado: Yukiteru terá que usar seu poder para sobreviver em um jogo envolvendo perigosos assassinos e psicopatas, cada um com um diário do futuro especial em suas mãos, numa disputa para ver quem sucederá Deus Ex-Machina em seu trono.",
+            "wallpaper": "https://images5.alphacoders.com/789/thumb-1920-789549.jpg",
+            "volumes": [
+                {
+                    "volume": "Volume 01",
+                    "status": "Adquirido",
+                    "imagem": "https://m.media-amazon.com/images/I/718tGQZR9ZL._AC_UF1000,1000_QL80_.jpg"
+                },
+                {
+                    "volume": "Volume 02",
+                    "status": "Adquirido",
+                    "imagem": "https://m.media-amazon.com/images/I/71XyAdqqmrL._AC_UF1000,1000_QL80_.jpg"
+                },
+                {
+                    "volume": "Volume 03",
+                    "status": "Adquirido",
+                    "imagem": "https://m.media-amazon.com/images/I/71oWxfAfu0L._AC_UF1000,1000_QL80_.jpg"
+                },
+                {
+                    "volume": "Volume 04",
+                    "status": "Adquirido",
+                    "imagem": "https://m.media-amazon.com/images/I/71ZL45lyCYL._SL1500_.jpg"
+                },
+                {
+                    "volume": "Volume 05",
+                    "status": "Adquirido",
+                    "imagem": "https://m.media-amazon.com/images/I/714JwZ7RebL._AC_UF1000,1000_QL80_.jpg"
+                },
+                {
+                    "volume": "Volume 06",
+                    "status": "Adquirido",
+                    "imagem": "https://m.media-amazon.com/images/I/61ZbZ3a4uvL._AC_UF1000,1000_QL80_.jpg"
+                },
+                {
+                    "volume": "Volume 07",
+                    "status": "Adquirido",
+                    "imagem": "https://m.media-amazon.com/images/I/711i26XtToL._AC_UF1000,1000_QL80_.jpg"
+                },
+                {
+                    "volume": "Volume 08",
+                    "status": "Adquirido",
+                    "imagem": "https://m.media-amazon.com/images/I/71RSdKBjUlL._SL1500_.jpg"
+                },
+                {
+                    "volume": "Volume 09",
+                    "status": "Adquirido",
+                    "imagem": "https://m.media-amazon.com/images/I/71CTM-YCikL._AC_UF1000,1000_QL80_.jpg"
+                },
+                {
+                    "volume": "Volume 10",
+                    "status": "Adquirido",
+                    "imagem": "https://m.media-amazon.com/images/I/71orolOBN+L._AC_UF1000,1000_QL80_.jpg"
+                },
+                {
+                    "volume": "Volume 11",
+                    "status": "Adquirido",
+                    "imagem": "https://m.media-amazon.com/images/I/7163FITE61L._AC_UF1000,1000_QL80_.jpg"
+                },
+                {
+                    "volume": "Volume 12",
+                    "status": "Adquirido",
+                    "imagem": "https://m.media-amazon.com/images/I/71+sCC29l0L._AC_UF1000,1000_QL80_.jpg"
+                },
+                {
+                    "volume": "Paradox",
+                    "status": "Adquirido",
+                    "imagem": "https://m.media-amazon.com/images/I/61JJA6xcZNL._SL1053_.jpg"
+                },
+                {
+                    "volume": "Mosaic",
+                    "status": "Adquirido",
+                    "imagem": "https://m.media-amazon.com/images/I/71kPzCcniuL._SL1500_.jpg"
+                }
+            ]
+        },
+        {
+            "nome": "Maruru e Hachi: Os gatinhos companheiros",
+            "editora": "Panini",
+            "sinopsis": "Devido a certo acontecimento, Maruru deixou a casa de sua dona e se tornou um gato de rua. O mundo lá fora era mais cruel do que imaginava... Em meio a isso, ele conhece um gato mal-encarado chamado Hachi. Os dois resolvem fazer companhia um ao outro, mas... Esta história retrata a intensa luta diária desses gatos de rua (e das pessoas que os cercam) neste mundo difícil de se viver!",
+            "wallpaper": "https://foradoplastico.com.br/wp-content/uploads/2025/11/Maruru-e-Hachianunciof-1024x549.webp",
+            "volumes": [
+                {
+                    "volume": "Volume 01",
+                    "status": "Adquirido",
+                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_m9h68r9p5p62lamud4dd7ofg2u/-S897-FWEBP"
+                },
+                {
+                    "volume": "Volume 02",
+                    "status": "Falta",
+                    "imagem": "https://i0.wp.com/blogbbm.com/wp-content/uploads/2026/01/Maruru-e-Hachi-Os-Gatinhos-Companheiros-02.webp?fit=700%2C1024&ssl=1"
+                },
+                {
+                    "volume": "Volume 03",
+                    "status": "Falta",
+                    "imagem": "https://i0.wp.com/blogbbm.com/wp-content/uploads/2025/11/03.jpg?fit=720%2C1024&ssl=1"
+                },
+                {
+                    "volume": "Volume 04",
+                    "status": "Falta",
+                    "imagem": "https://i0.wp.com/blogbbm.com/wp-content/uploads/2025/11/04.jpg?fit=720%2C1024&ssl=1"
+                },
+                {
+                    "volume": "Volume 05",
+                    "status": "Falta",
+                    "imagem": "https://i0.wp.com/blogbbm.com/wp-content/uploads/2025/11/05.jpg?fit=720%2C1024&ssl=1"
+                },
+                {
+                    "volume": "Volume 06",
+                    "status": "Falta",
+                    "imagem": "https://i0.wp.com/blogbbm.com/wp-content/uploads/2025/11/06.jpg?fit=720%2C1024&ssl=1"
                 }
             ]
         }

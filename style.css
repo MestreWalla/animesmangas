@@ -37,7 +37,7 @@ header {
     background-color: var(--header-bg-color);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
-    padding: 24px;
+    padding: 16px 24px;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -64,6 +64,8 @@ h1 {
 }
 
 .back-button {
+    display: flex;
+    align-items: center;
     font-size: 1rem;
     font-weight: 600;
     color: var(--secondary-text-color);
@@ -78,8 +80,9 @@ h1 {
 
 .controls {
     display: flex;
-    gap: 16px;
+    gap: 12px;
     justify-self: end;
+    align-items: center; /* This is the new line */
 }
 
 .filter-options {

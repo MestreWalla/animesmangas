@@ -7,9 +7,13 @@ function createCards(filter = 'all', searchTerm = '') {
 
     let filteredData = data.categorias;
 
-    if (filter !== 'all') {
+    if (filter === 'Completo') {
         filteredData = filteredData.filter(categoria => 
-            categoria.volumes.some(v => v.status === filter)
+            categoria.volumes.every(v => v.status === 'Adquirido')
+        );
+    } else if (filter === 'Incompleto') {
+        filteredData = filteredData.filter(categoria => 
+            categoria.volumes.some(v => v.status === 'Falta')
         );
     }
 
@@ -20,7 +24,7 @@ function createCards(filter = 'all', searchTerm = '') {
     }
 
     if (filteredData.length === 0) {
-        cardGrid.innerHTML = `<p class="no-results">No matching manga found.</p>`;
+        cardGrid.innerHTML = `<p class=\"no-results\">Nenhum mangá correspondente encontrado.</p>`;
         return;
     }
 
@@ -59,20 +63,16 @@ function createCards(filter = 'all', searchTerm = '') {
             });
 
             flyingClone.addEventListener('transitionend', () => {
-                // 1. Make destination elements visible underneath the clone
                 destinationImage.style.opacity = 1;
                 loadingOverlay.querySelector('.loading-info').style.opacity = 1;
 
-                // 2. Prepare the clone for a fade-out transition and trigger it
                 flyingClone.style.transition = 'opacity 0.15s ease-out';
                 flyingClone.style.opacity = 0;
 
-                // 3. Remove the clone *after* it has finished fading out
                 flyingClone.addEventListener('transitionend', () => {
                     flyingClone.remove();
                 }, { once: true });
 
-                // 4. Navigate after a delay
                 setTimeout(() => {
                    window.location.href = `volumes.html?manga=${encodeURIComponent(categoria.nome)}`;
                 }, 2000);
@@ -130,11 +130,11 @@ function createLoadingScreen(categoria) {
     cover.src = categoria.volumes[0]?.imagem || 'placeholder.png';
     cover.alt = `Capa de ${categoria.nome}`;
     cover.className = 'loading-cover';
-    cover.style.opacity = 0; // Initially hidden
+    cover.style.opacity = 0; 
 
     const info = document.createElement('div');
     info.className = 'loading-info';
-    info.style.opacity = 0; // Initially hidden
+    info.style.opacity = 0; 
 
     const title = document.createElement('h2');
     title.textContent = categoria.nome;
