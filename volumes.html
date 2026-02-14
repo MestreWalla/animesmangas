@@ -4,30 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <title>Volumes</title>
 </head>
 <body>
     <header>
-        <a href="index.html" class="back-button">&#x2190; Voltar</a>
-        <h1 id="manga-title"></h1>
-        <div class="filter-bar">
-            <a href="index.html" class="home-button">Home</a>
-            <div class="filter-options">
-                <button class="filter-button" data-filter="all">Todos</button>
-                <button class="filter-button" data-filter="Adquirido">Adquiridos</button>
-                <button class="filter-button" data-filter="Falta">Faltantes</button>
+        <div class="header-content">
+            <a href="index.html" class="back-button">&#x2190; Back</a>
+            <h1 id="manga-title"></h1>
+            <div class="controls">
+                <div class="filter-options">
+                    <button class="filter-button active" data-filter="all">All</button>
+                    <button class="filter-button" data-filter="Adquirido">Acquired</button>
+                    <button class="filter-button" data-filter="Falta">Missing</button>
+                </div>
+                <button id="theme-toggle" class="theme-button">
+                    <span class="theme-icon"></span>
+                </button>
             </div>
         </div>
     </header>
     <main>
         <div class="synopsis-container">
-            <h2>Sinopse</h2>
+            <h2>Synopsis</h2>
             <p id="manga-synopsis"></p>
         </div>
-        <div class="content-container" id="volumes-container">
-            <!-- Cards dos volumes serão adicionados dinamicamente pelo JavaScript -->
+        <div class="card-grid" id="volumes-container">
+            <!-- Volume cards will be dynamically added here by JavaScript -->
         </div>
     </main>
     <script defer type="module" src="volumes.js"></script>
+    <script defer src="theme.js"></script>
 </body>
 </html>

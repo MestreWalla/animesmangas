@@ -4,28 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Mangás</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Mangá Collection</title>
 </head>
 <body>
     <header>
-        <h1>Minha Coleção de Mangás</h1>
-        <div class="filter-bar">
-            <a href="index.html" class="home-button">Home</a>
-            <input type="text" id="search-bar" placeholder="Pesquisar por nome...">
-            <div class="filter-options">
-                <button class="filter-button" data-filter="all">Todos</button>
-                <button class="filter-button" data-filter="Adquirido">Adquiridos</button>
-                <button class="filter-button" data-filter="Falta">Faltantes</button>
+        <div class="header-content">
+            <h1>My Mangá Collection</h1>
+            <div class="controls">
+                <div class="filter-options">
+                    <button class="filter-button active" data-filter="all">All</button>
+                    <button class="filter-button" data-filter="Adquirido">Acquired</button>
+                    <button class="filter-button" data-filter="Falta">Missing</button>
+                </div>
+                <input type="text" id="search-bar" placeholder="Search by title...">
+                <button id="theme-toggle" class="theme-button">
+                    <span class="theme-icon"></span>
+                </button>
             </div>
         </div>
     </header>
     <main>
-        <div class="content-container">
-            <content>
-                <!-- Cards serão adicionados dinamicamente pelo JavaScript -->
-            </content>
+        <div class="card-grid">
+            <!-- Cards will be dynamically added here by JavaScript -->
         </div>
     </main>
     <script defer type="module" src="main.js"></script>
+    <script defer src="theme.js"></script>
 </body>
 </html>

@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mangaName = params.get('manga');
 
     const manga = data.categorias.find(c => c.nome === mangaName);
+    const mainContent = document.querySelector('main');
 
     if (manga) {
         document.getElementById('manga-title').textContent = manga.nome;
@@ -21,27 +22,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 filteredVolumes = filteredVolumes.filter(v => v.status === filter);
             }
 
+            if (filteredVolumes.length === 0) {
+                volumesContainer.innerHTML = `<p class="no-results">No matching volumes found.</p>`;
+                return;
+            }
+
             filteredVolumes.forEach(volume => {
                 const card = document.createElement('div');
-                card.className = 'card volume-card';
+                card.className = `card ${volume.status.toLowerCase()}`;
+                // The card is not clickable, so let's add the disabled class to prevent hover effects
+                if (volume.status === 'Falta') {
+                    card.classList.add('disabled');
+                }
+
+                const imageContainer = document.createElement('div');
+                imageContainer.className = 'card-image-container';
 
                 const img = document.createElement('img');
                 img.src = volume.imagem;
                 img.alt = `Capa do volume ${volume.volume} de ${manga.nome}`;
-                card.appendChild(img);
+                img.className = 'card-image';
+                imageContainer.appendChild(img);
 
-                const cardInfo = document.createElement('div');
-                cardInfo.className = 'card-info';
+                const cardContent = document.createElement('div');
+                cardContent.className = 'card-content';
 
                 const title = document.createElement('h2');
-                title.textContent = `${volume.volume}`;
-                cardInfo.appendChild(title);
+                title.textContent = `Volume ${volume.volume}`;
+                title.className = 'card-title';
+                cardContent.appendChild(title);
 
                 const status = document.createElement('p');
                 status.textContent = volume.status;
-                cardInfo.appendChild(status);
+                status.className = 'card-subtitle';
+                cardContent.appendChild(status);
 
-                card.appendChild(cardInfo);
+                card.appendChild(imageContainer);
+                card.appendChild(cardContent);
 
                 volumesContainer.appendChild(card);
             });
@@ -57,5 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderVolumes(e.target.dataset.filter);
             });
         });
+    } else {
+        mainContent.innerHTML = `<p class="no-results">Manga not found. Please return to the <a href="index.html">home page</a>.</p>`;
+        document.getElementById('manga-title').textContent = 'Not Found';
     }
 });
