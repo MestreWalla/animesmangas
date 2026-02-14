@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Mangás</title>
+    <title>Volumes</title>
 </head>
 <body>
     <header>
-        <h1>Minha Coleção de Mangás</h1>
+        <a href="index.html" class="back-button">&#x2190; Voltar</a>
+        <h1 id="manga-title"></h1>
         <div class="filter-bar">
             <a href="index.html" class="home-button">Home</a>
-            <input type="text" id="search-bar" placeholder="Pesquisar por nome...">
             <div class="filter-options">
                 <button class="filter-button" data-filter="all">Todos</button>
                 <button class="filter-button" data-filter="Adquirido">Adquiridos</button>
@@ -20,12 +20,14 @@
         </div>
     </header>
     <main>
-        <div class="content-container">
-            <content>
-                <!-- Cards serão adicionados dinamicamente pelo JavaScript -->
-            </content>
+        <div class="synopsis-container">
+            <h2>Sinopse</h2>
+            <p id="manga-synopsis"></p>
+        </div>
+        <div class="content-container" id="volumes-container">
+            <!-- Cards dos volumes serão adicionados dinamicamente pelo JavaScript -->
         </div>
     </main>
-    <script defer type="module" src="main.js"></script>
+    <script defer type="module" src="volumes.js"></script>
 </body>
 </html>
