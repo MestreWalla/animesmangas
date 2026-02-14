@@ -36,16 +36,38 @@ function createCards(filter = 'all', searchTerm = '') {
             loadingCard.className = 'loading-card';
             loadingCard.style.backgroundImage = `url('${categoria.wallpaper}')`;
 
+            const loadingContent = document.createElement('div');
+            loadingContent.className = 'loading-content';
+
+            const cover = document.createElement('img');
+            cover.src = categoria.volumes[0]?.imagem || 'placeholder.png';
+            cover.alt = `Capa de ${categoria.nome}`;
+            cover.className = 'loading-cover';
+
+            const info = document.createElement('div');
+            info.className = 'loading-info';
+
+            const title = document.createElement('h2');
+            title.textContent = categoria.nome;
+
+            const sinopsis = document.createElement('p');
+            sinopsis.textContent = categoria.sinopsis || 'No synopsis available.';
+
             const spinner = document.createElement('div');
             spinner.className = 'loading-spinner';
-            loadingCard.appendChild(spinner);
 
+            info.appendChild(title);
+            info.appendChild(sinopsis);
+            info.appendChild(spinner);
+            loadingContent.appendChild(cover);
+            loadingContent.appendChild(info);
+            loadingCard.appendChild(loadingContent);
             loadingOverlay.appendChild(loadingCard);
             document.body.appendChild(loadingOverlay);
 
             setTimeout(() => {
                 window.location.href = `volumes.html?manga=${encodeURIComponent(categoria.nome)}`;
-            }, 3000); // 3s delay
+            }, 4000); // 4s delay
         });
 
         const imageContainer = document.createElement('div');
@@ -60,10 +82,10 @@ function createCards(filter = 'all', searchTerm = '') {
         const cardContent = document.createElement('div');
         cardContent.className = 'card-content';
         
-        const title = document.createElement('h2');
-        title.textContent = categoria.nome;
-        title.className = 'card-title';
-        cardContent.appendChild(title);
+        const cardTitle = document.createElement('h2');
+        cardTitle.textContent = categoria.nome;
+        cardTitle.className = 'card-title';
+        cardContent.appendChild(cardTitle);
 
         const editora = document.createElement('p');
         editora.textContent = categoria.editora;

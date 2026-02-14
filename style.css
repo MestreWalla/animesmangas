@@ -157,32 +157,6 @@ main {
     margin: 0 auto;
 }
 
-.synopsis-container {
-    background-color: var(--card-color);
-    border: 1px solid var(--border-color);
-    padding: 24px;
-    border-radius: 16px;
-    margin-bottom: 24px;
-    transition: background-color 0.3s, border-color 0.3s;
-}
-
-.synopsis-container h2 {
-    margin: 0 0 16px 0;
-    font-size: 1.2rem;
-    color: var(--primary-text-color);
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 16px;
-    transition: color 0.3s, border-color 0.3s;
-}
-
-.synopsis-container p {
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--secondary-text-color);
-    transition: color 0.3s;
-}
-
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -212,7 +186,7 @@ main {
 
 .card-image-container {
     width: 100%;
-    padding-top: 140%; /* Aspect ratio for the image */
+    padding-top: 140%;
     position: relative;
     overflow: hidden;
 }
@@ -269,7 +243,7 @@ main {
     grid-column: 1 / -1;
 }
 
-/* Loading Overlay */
+/* Elegant Loading Screen */
 .loading-overlay {
     position: fixed;
     top: 0;
@@ -277,58 +251,121 @@ main {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(8px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    backdrop-filter: blur(10px);
     z-index: 9999;
-    animation: fadeIn 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
 }
 
 .loading-card {
     position: relative;
-    width: 80vw;
-    height: 80vh;
-    max-height: 600px;
+    width: 90vw;
+    max-width: 800px;
+    height: 70vh;
+    max-height: 500px;
+    border-radius: 24px;
+    box-shadow: 0 16px 48px var(--shadow-color);
+    border: 1px solid var(--border-color);
     background-size: cover;
     background-position: center;
-    border-radius: 24px;
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
-    border: 1px solid var(--border-color);
-    transform: scale(0.95);
-    animation: zoomIn 0.4s ease-out forwards;
+    transform: scale(0.9);
+    animation: zoomIn 0.5s ease-out 0.2s forwards;
+}
+
+.loading-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.2) 70%);
+    z-index: 1;
+}
+
+.loading-content {
+    position: relative;
+    display: flex;
+    gap: 32px;
+    padding: 40px;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    box-sizing: border-box;
+    opacity: 0;
+    animation: fadeInContent 0.5s ease-out 0.6s forwards;
+}
+
+.loading-cover {
+    width: 35%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0;
+}
+
+.loading-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    color: #FFFFFF;
+    height: 100%;
+    overflow: hidden;
+}
+
+.loading-info h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0 0 16px 0;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    flex-shrink: 0;
+}
+
+.loading-info p {
+    flex-grow: 1;
+    overflow-y: auto;
+    line-height: 1.7;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+    padding-right: 16px;
 }
 
 .loading-spinner {
+    align-self: center;
+    margin-top: 24px;
     border: 4px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     border-top: 4px solid var(--accent-color);
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     animation: spin 1s linear infinite;
+    flex-shrink: 0;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInContent {
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes zoomIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
 }
