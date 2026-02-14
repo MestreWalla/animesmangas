@@ -4,6 +4,7 @@ export default {
             "nome": "Solo Leveling",
             "editora": "Panini",
             "sinopsis": "Solo Leveling conta a história de Sung Jin-Woo, um caçador de monstros de baixo nível que adquire um poder extraordinário para subir de nível e se tornar o caçador mais forte do mundo.",
+            "wallpaper": "https://wallpapers.com/images/hd/solo-leveling-background-tfur0tt8ch9ltkhv.jpg",
             "volumes": [
                 {
                     "volume": "Volume 01",
@@ -67,6 +68,7 @@ export default {
             "nome": "Frieren E A Jornada Para O Além",
             "editora": "Panini",
             "sinopsis": "Frieren é uma elfa maga que fez parte de um grupo de heróis que derrotou o Rei Demônio. Após a vitória, ela promete se reencontrar com seus companheiros, mas, sendo uma elfa, sua percepção do tempo é muito diferente da dos humanos. Anos depois, ela embarca em uma nova jornada para entender melhor a si mesma e o significado das relações que construiu.",
+            "wallpaper": "https://4kwallpapers.com/images/wallpapers/frieren-beyond-5120x2880-15157.jpeg",
             "volumes": [
                 {
                     "volume": "Volume 01",
@@ -139,6 +141,7 @@ export default {
             "nome": "Your Name",
             "editora": "JBC",
             "sinopsis": "Mitsuha, uma estudante do ensino médio, anseia por viver a vida de um garoto na movimentada cidade de Tóquio. Taki, um estudante em Tóquio, tem um sonho estranho onde ele é uma garota em uma cidade pequena no campo. Seus destinos se entrelaçam quando eles descobrem que podem trocar de corpo.",
+            "wallpaper": "https://wallpapers.com/images/featured/kimi-no-na-wa-b5qwq6u6ea6qfd94.jpg",
             "volumes": [
                 {
                     "volume": "Edição única",

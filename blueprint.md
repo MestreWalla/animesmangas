@@ -16,27 +16,26 @@ This application allows users to browse and manage their manga collection. Users
     *   Searching by manga title.
     *   A separate "Volumes" page with a consistent design.
     *   Light/dark theme switching with persistence in `localStorage`.
+    *   A discreet volume counter on each manga card.
 
 ---
 
-## **New Feature: Volume Counter on Cards**
+## **New Feature: Card-Based Loading Screen**
 
-This feature will display the number of acquired volumes versus the total number of volumes for each manga directly on its card on the main page (e.g., "5/10").
+This feature will create a more focused and elegant transition when a user clicks on a manga card to view its volumes.
 
 ### 1. **Visual & Functional Goals**
-*   **Data Calculation:** For each manga, the application will calculate:
-    *   The total number of volumes.
-    *   The number of volumes with the status "Adquirido".
-*   **Display:** The count will be displayed on each manga card in a discreet manner.
-*   **Styling:** The counter will be positioned in the bottom-right corner of the card, with a subtle design that doesn't distract from the main content.
+*   **Trigger:** The loading screen will appear when a user clicks on a manga card on the main page.
+*   **Visuals:** A blurred, full-screen backdrop will be displayed. In the center, a large card will appear, featuring the manga's `wallpaper` as its background. A subtle loading animation will be centered within this card.
+*   **Transition:** After a short delay, the application will navigate to the corresponding `volumes.html` page.
 
 ### 2. **Actionable Steps**
 
 1.  **JavaScript (`main.js`):**
-    *   In the `createCards` function, for each manga, calculate the acquired and total volume counts.
-    *   Create a new HTML element (e.g., a `p` or `div`) to hold the volume count text.
-    *   Append this element directly to the `card` element to allow for absolute positioning.
+    *   In the card's click event listener, the script will create a container for the loading overlay, which will act as a blurred backdrop.
+    *   Inside the container, a new `div` for the loading card will be created. This card's background will be set to the manga's `wallpaper`.
+    *   A `setTimeout` function will manage the transition to the `volumes.html` page after a delay.
 2.  **CSS (`style.css`):**
-    *   Add `position: relative` to the `.card` class.
-    *   Style the `.card-volume-count` class to be positioned absolutely in the bottom-right corner.
-    *   Adjust the styling to be more discreet, with a smaller font size and a subtle background color to ensure readability.
+    *   Update the `.loading-overlay` style to be a blurred backdrop.
+    *   Create a new `.loading-card` class for the centered card, with styles for its size, border-radius, shadow, and background properties.
+    *   Ensure the loading spinner is positioned correctly within the `.loading-card`.

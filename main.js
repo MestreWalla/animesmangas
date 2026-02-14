@@ -29,14 +29,29 @@ function createCards(filter = 'all', searchTerm = '') {
         card.className = 'card';
 
         card.addEventListener('click', () => {
-            window.location.href = `volumes.html?manga=${encodeURIComponent(categoria.nome)}`;
+            const loadingOverlay = document.createElement('div');
+            loadingOverlay.className = 'loading-overlay';
+
+            const loadingCard = document.createElement('div');
+            loadingCard.className = 'loading-card';
+            loadingCard.style.backgroundImage = `url('${categoria.wallpaper}')`;
+
+            const spinner = document.createElement('div');
+            spinner.className = 'loading-spinner';
+            loadingCard.appendChild(spinner);
+
+            loadingOverlay.appendChild(loadingCard);
+            document.body.appendChild(loadingOverlay);
+
+            setTimeout(() => {
+                window.location.href = `volumes.html?manga=${encodeURIComponent(categoria.nome)}`;
+            }, 3000); // 3s delay
         });
 
         const imageContainer = document.createElement('div');
         imageContainer.className = 'card-image-container';
 
         const img = document.createElement('img');
-        // Use the first volume's image as the card's cover
         img.src = categoria.volumes[0]?.imagem || 'placeholder.png'; 
         img.alt = `Capa do mangá ${categoria.nome}`;
         img.className = 'card-image';
@@ -63,7 +78,7 @@ function createCards(filter = 'all', searchTerm = '') {
         
         card.appendChild(imageContainer);
         card.appendChild(cardContent);
-        card.appendChild(volumeCount); // Append to card directly
+        card.appendChild(volumeCount);
 
         cardGrid.appendChild(card);
     });
