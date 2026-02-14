@@ -29,11 +29,9 @@ function createCards(filter = 'all', searchTerm = '') {
         card.className = 'card';
 
         card.addEventListener('click', (e) => {
-            // 1. Get origin position
             const originImage = e.currentTarget.querySelector('.card-image');
             const originRect = originImage.getBoundingClientRect();
 
-            // 2. Create and position the flying clone
             const flyingClone = originImage.cloneNode(true);
             flyingClone.className = 'flying-clone';
             flyingClone.style.position = 'fixed';
@@ -43,15 +41,12 @@ function createCards(filter = 'all', searchTerm = '') {
             flyingClone.style.height = `${originRect.height}px`;
             document.body.appendChild(flyingClone);
 
-            // 3. Build the loading screen (but keep it invisible)
             const loadingOverlay = createLoadingScreen(categoria);
             document.body.appendChild(loadingOverlay);
             
-            // 4. Calculate destination position (must happen after it's in the DOM)
             const destinationImage = loadingOverlay.querySelector('.loading-cover');
             const destinationRect = destinationImage.getBoundingClientRect();
 
-            // 5. Animate!
             requestAnimationFrame(() => {
                 cardGrid.classList.add('grid-faded');
                 loadingOverlay.classList.add('visible');
@@ -60,19 +55,28 @@ function createCards(filter = 'all', searchTerm = '') {
                 flyingClone.style.left = `${destinationRect.left}px`;
                 flyingClone.style.width = `${destinationRect.width}px`;
                 flyingClone.style.height = `${destinationRect.height}px`;
-                flyingClone.style.borderRadius = '16px'; // Match loading-cover radius
+                flyingClone.style.borderRadius = '16px';
             });
 
-            // 6. Clean up and transition
             flyingClone.addEventListener('transitionend', () => {
+                // 1. Make destination elements visible underneath the clone
                 destinationImage.style.opacity = 1;
                 loadingOverlay.querySelector('.loading-info').style.opacity = 1;
-                flyingClone.remove();
 
+                // 2. Prepare the clone for a fade-out transition and trigger it
+                flyingClone.style.transition = 'opacity 0.15s ease-out';
+                flyingClone.style.opacity = 0;
+
+                // 3. Remove the clone *after* it has finished fading out
+                flyingClone.addEventListener('transitionend', () => {
+                    flyingClone.remove();
+                }, { once: true });
+
+                // 4. Navigate after a delay
                 setTimeout(() => {
                    window.location.href = `volumes.html?manga=${encodeURIComponent(categoria.nome)}`;
-                }, 2000); // Wait after animation is done
-            });
+                }, 2000);
+            }, { once: true });
         });
 
         const imageContainer = document.createElement('div');
