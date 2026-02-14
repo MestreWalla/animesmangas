@@ -9,43 +9,40 @@ This application allows users to browse and manage their manga collection. Users
 ## Current Implemented Design
 
 *   **Layout:** A clean, responsive, and uniform grid of cards.
-*   **Styling:** A sophisticated dark theme with a subtle noise texture. Cards have a simple and elegant design with a "lift" and "glow" effect on hover.
+*   **Styling:** A sophisticated dark theme with a subtle noise texture.
 *   **Functionality:**
     *   Dynamic card generation from a `data.js` file.
-    *   Filtering by status (All, Acquired, Missing).
-    *   Searching by manga title.
-    *   A separate "Volumes" page with a consistent design.
-    *   Light/dark theme switching with persistence in `localStorage`.
-    *   A discreet volume counter on each manga card.
+    *   Filtering by status (All, Acquired, Missing) and searching by title.
+    *   Light/dark theme switching.
+    *   An elegant loading screen with a wallpaper background, side-by-side cover and synopsis, and smooth fade-in animations.
 
 ---
 
-## **New Feature: Elegant Loading Screen**
+## **New Feature: Shared Element Transition**
 
-This feature provides a beautiful and informative loading transition when a user clicks on a manga card.
+This feature creates a seamless and professional transition where the manga cover image appears to move from the grid and transform into the cover image on the loading screen.
 
 ### 1. **Visual & Functional Goals**
-*   **Trigger:** When a user clicks on a manga card on the main page.
-*   **Visuals:**
-    1.  A full-screen, blurred backdrop appears.
-    2.  A large, elegant card animates into the center of the screen. This card uses the manga's `wallpaper` for its background.
-    3.  Inside the card, the layout is split into two columns:
-        *   **Left:** The manga's cover image is displayed prominently.
-        *   **Right:** The manga's synopsis is shown, with a subtle loading spinner at the bottom.
-*   **Animation:** The loading card and its contents will fade and scale in smoothly for a polished effect.
-*   **Transition:** After a few seconds, the application navigates to the `volumes.html` page.
+*   **Trigger:** When a user clicks on a manga card.
+*   **Animation (The "Magic Move")**:
+    1.  Get the position of the clicked card's image (`.card-image`).
+    2.  Create a clone of this image and position it exactly over the original using `position: fixed`.
+    3.  Fade out the main card grid.
+    4.  Simultaneously, fade in the loading overlay's blurred background.
+    5.  The image clone then animates (transitions `top`, `left`, `width`, `height`, `border-radius`) from its starting position to the final position of the cover image within the loading screen.
+    6.  Once the image arrives at its destination, the rest of the loading screen content (synopsis, title, spinner) fades in.
+    7.  The image clone is removed, revealing the actual `.loading-cover` element underneath.
+*   **Transition:** After a delay, the application navigates to the `volumes.html` page.
 
 ### 2. **Actionable Steps**
 
 1.  **JavaScript (`main.js`):**
-    *   The card's click event listener will be completely rewritten.
-    *   It will dynamically create the HTML structure for the loading overlay, including the main card, the content container, the cover image, and the synopsis text.
-    *   The `style.backgroundImage` will be set to the manga's `wallpaper`.
-    *   The `src` of the cover image and the text of the synopsis will be populated from the `data.js` object.
-    *   A `setTimeout` will handle the navigation to `volumes.html`.
+    *   The card's click event listener will be completely rewritten to orchestrate this complex animation.
+    *   It will create the "flying clone" of the image and append it to the body.
+    *   It will dynamically create the loading overlay and its contents but keep them initially invisible.
+    *   Crucially, it will **calculate** the final destination (position and size) of the cover image *before* the animation starts.
+    *   CSS classes and `setTimeout` will be used to sequence the animation steps: fade out grid, fade in overlay, start image transition, fade in text content, and finally, navigate.
 2.  **CSS (`style.css`):**
-    *   All previous loading-related styles (`.card-clone`, `.expanded`, etc.) will be removed.
-    *   New styles will be created for `.loading-overlay`, `.loading-card`, and its internal elements.
-    *   `.loading-content` will use `display: flex` to create the side-by-side layout for the cover and synopsis.
-    *   Styles will be added for `.loading-cover` and `.loading-info` to control their size and spacing.
-    *   Keyframe animations (`@keyframes`) will be used to create a smooth, elegant entrance for the loading screen elements.
+    *   A new class, `.flying-clone`, will be created to style the animating image. This class will define its `position`, `z-index`, and smooth `transition` properties.
+    *   The `.loading-overlay` and `.loading-content` styles will be adjusted to have an initial `opacity` of 0 to allow them to be faded in at the correct time.
+    *   The card grid will have a fade-out transition.

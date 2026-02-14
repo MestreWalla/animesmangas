@@ -28,53 +28,58 @@ function createCards(filter = 'all', searchTerm = '') {
         const card = document.createElement('div');
         card.className = 'card';
 
-        card.addEventListener('click', () => {
-            const loadingOverlay = document.createElement('div');
-            loadingOverlay.className = 'loading-overlay';
+        card.addEventListener('click', (e) => {
+            // 1. Get origin position
+            const originImage = e.currentTarget.querySelector('.card-image');
+            const originRect = originImage.getBoundingClientRect();
 
-            const loadingCard = document.createElement('div');
-            loadingCard.className = 'loading-card';
-            loadingCard.style.backgroundImage = `url('${categoria.wallpaper}')`;
+            // 2. Create and position the flying clone
+            const flyingClone = originImage.cloneNode(true);
+            flyingClone.className = 'flying-clone';
+            flyingClone.style.position = 'fixed';
+            flyingClone.style.top = `${originRect.top}px`;
+            flyingClone.style.left = `${originRect.left}px`;
+            flyingClone.style.width = `${originRect.width}px`;
+            flyingClone.style.height = `${originRect.height}px`;
+            document.body.appendChild(flyingClone);
 
-            const loadingContent = document.createElement('div');
-            loadingContent.className = 'loading-content';
-
-            const cover = document.createElement('img');
-            cover.src = categoria.volumes[0]?.imagem || 'placeholder.png';
-            cover.alt = `Capa de ${categoria.nome}`;
-            cover.className = 'loading-cover';
-
-            const info = document.createElement('div');
-            info.className = 'loading-info';
-
-            const title = document.createElement('h2');
-            title.textContent = categoria.nome;
-
-            const sinopsis = document.createElement('p');
-            sinopsis.textContent = categoria.sinopsis || 'No synopsis available.';
-
-            const spinner = document.createElement('div');
-            spinner.className = 'loading-spinner';
-
-            info.appendChild(title);
-            info.appendChild(sinopsis);
-            info.appendChild(spinner);
-            loadingContent.appendChild(cover);
-            loadingContent.appendChild(info);
-            loadingCard.appendChild(loadingContent);
-            loadingOverlay.appendChild(loadingCard);
+            // 3. Build the loading screen (but keep it invisible)
+            const loadingOverlay = createLoadingScreen(categoria);
             document.body.appendChild(loadingOverlay);
+            
+            // 4. Calculate destination position (must happen after it's in the DOM)
+            const destinationImage = loadingOverlay.querySelector('.loading-cover');
+            const destinationRect = destinationImage.getBoundingClientRect();
 
-            setTimeout(() => {
-                window.location.href = `volumes.html?manga=${encodeURIComponent(categoria.nome)}`;
-            }, 4000); // 4s delay
+            // 5. Animate!
+            requestAnimationFrame(() => {
+                cardGrid.classList.add('grid-faded');
+                loadingOverlay.classList.add('visible');
+
+                flyingClone.style.top = `${destinationRect.top}px`;
+                flyingClone.style.left = `${destinationRect.left}px`;
+                flyingClone.style.width = `${destinationRect.width}px`;
+                flyingClone.style.height = `${destinationRect.height}px`;
+                flyingClone.style.borderRadius = '16px'; // Match loading-cover radius
+            });
+
+            // 6. Clean up and transition
+            flyingClone.addEventListener('transitionend', () => {
+                destinationImage.style.opacity = 1;
+                loadingOverlay.querySelector('.loading-info').style.opacity = 1;
+                flyingClone.remove();
+
+                setTimeout(() => {
+                   window.location.href = `volumes.html?manga=${encodeURIComponent(categoria.nome)}`;
+                }, 2000); // Wait after animation is done
+            });
         });
 
         const imageContainer = document.createElement('div');
         imageContainer.className = 'card-image-container';
 
         const img = document.createElement('img');
-        img.src = categoria.volumes[0]?.imagem || 'placeholder.png'; 
+        img.src = categoria.volumes[0]?.imagem || 'placeholder.png';
         img.alt = `Capa do mangá ${categoria.nome}`;
         img.className = 'card-image';
         imageContainer.appendChild(img);
@@ -104,6 +109,47 @@ function createCards(filter = 'all', searchTerm = '') {
 
         cardGrid.appendChild(card);
     });
+}
+
+function createLoadingScreen(categoria) {
+    const loadingOverlay = document.createElement('div');
+    loadingOverlay.className = 'loading-overlay';
+
+    const loadingCard = document.createElement('div');
+    loadingCard.className = 'loading-card';
+    loadingCard.style.backgroundImage = `url('${categoria.wallpaper}')`;
+
+    const loadingContent = document.createElement('div');
+    loadingContent.className = 'loading-content';
+
+    const cover = document.createElement('img');
+    cover.src = categoria.volumes[0]?.imagem || 'placeholder.png';
+    cover.alt = `Capa de ${categoria.nome}`;
+    cover.className = 'loading-cover';
+    cover.style.opacity = 0; // Initially hidden
+
+    const info = document.createElement('div');
+    info.className = 'loading-info';
+    info.style.opacity = 0; // Initially hidden
+
+    const title = document.createElement('h2');
+    title.textContent = categoria.nome;
+
+    const sinopsis = document.createElement('p');
+    sinopsis.textContent = categoria.sinopsis || 'No synopsis available.';
+
+    const spinner = document.createElement('div');
+    spinner.className = 'loading-spinner';
+
+    info.appendChild(title);
+    info.appendChild(sinopsis);
+    info.appendChild(spinner);
+    loadingContent.appendChild(cover);
+    loadingContent.appendChild(info);
+    loadingCard.appendChild(loadingContent);
+    loadingOverlay.appendChild(loadingCard);
+
+    return loadingOverlay;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
