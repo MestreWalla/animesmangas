@@ -105,6 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             card.addEventListener('click', (e) => {
                 const originImage = e.currentTarget.querySelector('.card-image');
+                if (!originImage.src) return; // Don't animate if there is no image
+
                 const originRect = originImage.getBoundingClientRect();
 
                 const flyingClone = originImage.cloneNode(true);
@@ -120,13 +122,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.appendChild(loadingOverlay);
                 
                 const destinationImage = loadingOverlay.querySelector('.loading-cover');
-                let destinationRect;
+                const loadingInfo = loadingOverlay.querySelector('.loading-info');
 
                 requestAnimationFrame(() => {
                     mangaGrid.classList.add('grid-faded');
                     loadingOverlay.classList.add('visible');
                     
-                    destinationRect = destinationImage.getBoundingClientRect();
+                    const destinationRect = destinationImage.getBoundingClientRect();
 
                     flyingClone.style.top = `${destinationRect.top}px`;
                     flyingClone.style.left = `${destinationRect.left}px`;
@@ -135,20 +137,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     flyingClone.style.borderRadius = '16px';
                 });
 
+                // --- ANIMATION FIX ---
                 flyingClone.addEventListener('transitionend', () => {
+                    // Make the destination elements visible. CSS transitions will handle the fade-in.
                     destinationImage.style.opacity = 1;
-                    loadingOverlay.querySelector('.loading-info').style.opacity = 1;
+                    loadingInfo.style.opacity = 1;
 
-                    flyingClone.style.transition = 'opacity 0.15s ease-out';
-                    flyingClone.style.opacity = 0;
-
-                    flyingClone.addEventListener('transitionend', () => {
+                    // Wait for the destination image's opacity transition to finish before removing the clone.
+                    // The CSS transition is now 0.3s (no delay).
+                    setTimeout(() => {
                         flyingClone.remove();
-                    }, { once: true });
+                    }, 350); 
 
+                    // Navigate after a longer delay to let the user see the popup.
                     setTimeout(() => {
                        window.location.href = `volumes.html?manga=${encodeURIComponent(categoria.nome)}`;
-                    }, 2000);
+                    }, 1200);
+
                 }, { once: true });
             });
 

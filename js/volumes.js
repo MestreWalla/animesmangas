@@ -48,7 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
             let filteredVolumes = manga.volumes;
 
             if (filter !== 'all') {
-                filteredVolumes = filteredVolumes.filter(v => v.status === filter);
+                if (filter === 'Faltando') {
+                    // A missing volume is any volume that is not 'Adquirido'
+                    filteredVolumes = filteredVolumes.filter(v => v.status !== 'Adquirido');
+                } else {
+                    // This handles 'Adquirido'
+                    filteredVolumes = filteredVolumes.filter(v => v.status === filter);
+                }
             }
 
             if (filteredVolumes.length === 0) {
@@ -58,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             filteredVolumes.forEach(volume => {
                 const card = document.createElement('div');
-                card.className = `card volume-card ${volume.status.toLowerCase()}`;
+                card.className = `card volume-card ${volume.status ? volume.status.toLowerCase() : 'faltando'}`;
                 card.innerHTML = `
                     <div class="card-image-container">
                         <img src="${volume.imagem}" alt="Capa do ${volume.volume} de ${manga.nome}" class="card-image">
@@ -74,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const filterButtons = document.querySelectorAll('.filter-btn');
         if (filterButtons.length > 0) {
-            // Set "all" as active by default
             const allButton = document.querySelector('.filter-btn[data-filter="all"]');
             if (allButton) {
                 allButton.classList.add('active');
@@ -82,21 +87,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
             filterButtons.forEach(button => {
                 button.addEventListener('click', (e) => {
-                    // Remove active class from the current active button
                     const currentActive = document.querySelector('.filter-btn.active');
                     if (currentActive) {
                         currentActive.classList.remove('active');
                     }
-                    // Add active class to the clicked button
                     const targetButton = e.currentTarget;
                     targetButton.classList.add('active');
-                    // Render volumes based on the filter
                     renderVolumes(targetButton.dataset.filter);
                 });
             });
         }
 
-        // Initial render
         renderVolumes();
 
     } else {

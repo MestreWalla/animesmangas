@@ -18,7 +18,7 @@ O "Mangá Collection" é uma aplicação web para gerenciar e exibir uma coleç�
 
 ### Layout e Componentes
 
-*   **Cabeçalho:** Um cabeçalho fixo com o título da aplicação, um campo de pesquisa e botões de filtro.
+*   **Cabeçalho:** Um cabeçalho fixo com o título da aplicação, um seletor de tema animado e um campo de pesquisa.
 *   **Grid de Cards:** Uma grade responsiva que exibe os cards de mangá.
 *   **Cards de Mangá:** Cada card exibe a imagem da capa, o título, a editora e uma contagem do número de volumes adquiridos em relação ao total.
 
@@ -33,7 +33,7 @@ O "Mangá Collection" é uma aplicação web para gerenciar e exibir uma coleç�
 
 ### Layout e Componentes
 
-*   **Cabeçalho:** Um cabeçalho com um botão de voltar, filtros de volume e um botão de troca de tema.
+*   **Cabeçalho:** Um cabeçalho com um botão de voltar, filtros de volume e um seletor de tema animado.
 *   **Informações do Mangá:** Uma seção que exibe o título e a sinopse do mangá.
 *   **Grid de Volumes:** Uma grade que exibe os cards de volume para o mangá selecionado.
 *   **Cards de Volume:** Cada card de volume exibe a imagem da capa, o número do volume e o status (adquirido ou faltando).
@@ -52,7 +52,9 @@ O "Mangá Collection" é uma aplicação web para gerenciar e exibir uma coleç�
 
 ### Tema Claro/Escuro
 
-*   A aplicação inclui um botão para alternar entre os temas claro e escuro. A preferência do usuário é salva no `localStorage`.
+*   **Seletor de Tema Animado:** A aplicação apresenta um seletor de tema animado e altamente interativo. Ele exibe uma animação de um sol se transformando em uma lua dentro de um céu que muda de cor, com nuvens que se tornam estrelas. 
+*   **Implementação:** A funcionalidade é construída com HTML (usando múltiplos `divs` para os elementos visuais), CSS avançado (utilizando Grid, posicionamento absoluto e transições complexas) e JavaScript.
+*   **Persistência:** O script `theme.js` gerencia a lógica, alternando o atributo `data-theme` no `<body>` e salvando a preferência do usuário no `localStorage` para manter a consistência entre as sessões.
 
 ## Dados (`data.js`)
 
@@ -62,4 +64,8 @@ O "Mangá Collection" é uma aplicação web para gerenciar e exibir uma coleç�
 
 # Plano Atual
 
-*   Atualizar o arquivo `blueprint.md` para refletir o estado atual da aplicação.
+**Visão Geral da Última Atualização:**
+
+1.  **Seletor de Tema Aprimorado:** O seletor de tema antigo foi substituído por um componente animado e interativo, melhorando significativamente a experiência do usuário.
+2.  **Correção de Estilos:** Foram restaurados os estilos da animação de carregamento (popup de transição) e corrigido o fundo do cabeçalho, que haviam sido acidentalmente removidos.
+3.  **Atualização do Blueprint:** Este documento (`blueprint.md`) foi atualizado para refletir as novas funcionalidades e o estado atual do projeto.

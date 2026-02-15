@@ -514,13 +514,13 @@ main {
     object-fit: cover;
     border-radius: 16px;
     flex-shrink: 0;
-    transition: opacity 0.3s 0.2s ease-in;
+    transition: opacity 0.3s ease-in;
 }
 
 .loading-info {
     color: white;
     padding-left: 30px;
-    transition: opacity 0.3s 0.3s ease-in;
+    transition: opacity 0.3s ease-in;
 }
 
 .loading-info h2 {
