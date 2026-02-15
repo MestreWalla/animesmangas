@@ -19,8 +19,17 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18L9 12l6-6"/></svg>
             </a>
             <h1 id="header-manga-title" class="header-manga-title">Carregando...</h1>
-            <button class="theme-button" aria-label="Mudar tema">
-                <div class="theme-icon"></div>
+            <button class="theme-switcher-grid" id="theme-switcher" aria-label="Switch theme">
+                <div class="sun" aria-hidden="true"></div>
+                <div class="moon-overlay" aria-hidden="true"></div>
+                <div class="cloud-ball cloud-ball-left" aria-hidden="true"></div>
+                <div class="cloud-ball cloud-ball-middle" aria-hidden="true"></div>
+                <div class="cloud-ball cloud-ball-right" aria-hidden="true"></div>
+                <div class="cloud-ball cloud-ball-top" aria-hidden="true"></div>
+                <div class="star" id="star1" aria-hidden="true"></div>
+                <div class="star" id="star2" aria-hidden="true"></div>
+                <div class="star" id="star3" aria-hidden="true"></div>
+                <div class="star" id="star4" aria-hidden="true"></div>
             </button>
         </div>
     </header>
@@ -43,9 +52,9 @@
                 <div class="filter-controls-container">
                     <h2>Volumes</h2>
                     <div class="filter-controls">
-                        <button class="filter-button active" data-filter="all">Todos</button>
-                        <button class="filter-button" data-filter="Adquirido">Adquiridos</button>
-                        <button class="filter-button" data-filter="Falta">Faltantes</button>
+                        <button class="filter-btn" data-filter="all">Todos os Volumes</button>
+                        <button class="filter-btn" data-filter="Adquirido">Adquiridos</button>
+                        <button class="filter-btn" data-filter="Faltando">Faltantes</button>
                     </div>
                 </div>
                 <div id="volumes-container" class="card-grid">

@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (manga) {
         console.log("Found manga data:", manga);
 
-        // Set wallpaper
         if (manga.wallpaper) {
             const wallpaperBg = document.getElementById('manga-wallpaper-bg');
             if (wallpaperBg) {
@@ -24,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Populate header and sidebar
         document.getElementById('page-title').textContent = manga.nome;
         document.getElementById('header-manga-title').textContent = manga.nome;
         document.getElementById('manga-title').textContent = manga.nome;
@@ -35,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             coverImage.src = manga.volumes[0].imagem;
             coverImage.alt = `Capa de ${manga.nome}`;
         } else if (coverImage) {
-            coverImage.style.display = 'none'; // Hide if no image
+            coverImage.style.display = 'none';
         }
 
         const volumesContainer = document.getElementById('volumes-container');
@@ -60,46 +58,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
             filteredVolumes.forEach(volume => {
                 const card = document.createElement('div');
-                card.className = `card ${volume.status.toLowerCase()}`;
-                
-                const imageContainer = document.createElement('div');
-                imageContainer.className = 'card-image-container';
-                
-                const img = document.createElement('img');
-                img.src = volume.imagem;
-                img.alt = `Capa do ${volume.volume} de ${manga.nome}`;
-                img.className = 'card-image';
-                imageContainer.appendChild(img);
-
-                const cardContent = document.createElement('div');
-                cardContent.className = 'card-content';
-
-                const title = document.createElement('h2');
-                title.textContent = volume.volume;
-                title.className = 'card-title';
-                cardContent.appendChild(title);
-
-                const statusIndicator = document.createElement('span');
-                statusIndicator.className = 'status-indicator';
-                cardContent.appendChild(statusIndicator);
-
-                card.appendChild(imageContainer);
-                card.appendChild(cardContent);
-
+                card.className = `card volume-card ${volume.status.toLowerCase()}`;
+                card.innerHTML = `
+                    <div class="card-image-container">
+                        <img src="${volume.imagem}" alt="Capa do ${volume.volume} de ${manga.nome}" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">${volume.volume}</h3>
+                    </div>
+                    <div class="status-indicator"></div>
+                `;
                 volumesContainer.appendChild(card);
             });
         }
 
-        renderVolumes();
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        if (filterButtons.length > 0) {
+            // Set "all" as active by default
+            const allButton = document.querySelector('.filter-btn[data-filter="all"]');
+            if (allButton) {
+                allButton.classList.add('active');
+            }
 
-        const filterButtons = document.querySelectorAll('.filter-button');
-        filterButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                e.target.classList.add('active');
-                renderVolumes(e.target.dataset.filter);
+            filterButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    // Remove active class from the current active button
+                    const currentActive = document.querySelector('.filter-btn.active');
+                    if (currentActive) {
+                        currentActive.classList.remove('active');
+                    }
+                    // Add active class to the clicked button
+                    const targetButton = e.currentTarget;
+                    targetButton.classList.add('active');
+                    // Render volumes based on the filter
+                    renderVolumes(targetButton.dataset.filter);
+                });
             });
-        });
+        }
+
+        // Initial render
+        renderVolumes();
 
     } else {
         console.error("Manga not found!");
