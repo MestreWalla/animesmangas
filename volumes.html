@@ -18,11 +18,7 @@
             <a href="index.html" class="back-button" aria-label="Voltar para a coleção">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18L9 12l6-6"/></svg>
             </a>
-            <div class="filter-controls">
-                <button class="filter-button active" data-filter="all">Todos</button>
-                <button class="filter-button" data-filter="Adquirido">Adquiridos</button>
-                <button class="filter-button" data-filter="Falta">Faltantes</button>
-            </div>
+            <h1 id="header-manga-title" class="header-manga-title">Carregando...</h1>
             <button class="theme-button" aria-label="Mudar tema">
                 <div class="theme-icon"></div>
             </button>
@@ -30,13 +26,32 @@
     </header>
 
     <main class="manga-detail-main">
-        <div class="manga-info">
-            <h1 id="manga-title">Carregando...</h1>
-            <p id="manga-synopsis">Carregando...</p>
-        </div>
+        <div class="manga-detail-container">
+            <!-- Coluna da Esquerda: Informações do Mangá -->
+            <aside class="manga-detail-sidebar">
+                <div class="sidebar-content">
+                    <img id="manga-cover-image" src="" alt="Capa do Mangá" class="manga-cover-image">
+                    <div class="manga-info">
+                        <h1 id="manga-title">Carregando...</h1>
+                        <p id="manga-synopsis">Carregando...</p>
+                    </div>
+                </div>
+            </aside>
 
-        <div id="volumes-container" class="card-grid">
-            <!-- Volumes do mangá serão inseridos aqui -->
+            <!-- Coluna da Direita: Volumes -->
+            <div class="manga-detail-content">
+                <div class="filter-controls-container">
+                    <h2>Volumes</h2>
+                    <div class="filter-controls">
+                        <button class="filter-button active" data-filter="all">Todos</button>
+                        <button class="filter-button" data-filter="Adquirido">Adquiridos</button>
+                        <button class="filter-button" data-filter="Falta">Faltantes</button>
+                    </div>
+                </div>
+                <div id="volumes-container" class="card-grid">
+                    <!-- Volumes do mangá serão inseridos aqui -->
+                </div>
+            </div>
         </div>
     </main>
 

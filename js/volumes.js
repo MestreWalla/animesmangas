@@ -2,20 +2,6 @@ console.log("volumes.js script started");
 
 import data from './data.js';
 
-// --- Loader --- 
-window.addEventListener('load', () => {
-    const loader = document.getElementById('loader-container');
-    if (loader) {
-        console.log("Window fully loaded, hiding loader.");
-        // Fade out
-        loader.style.opacity = '0';
-        // Hide after transition
-        setTimeout(() => {
-            loader.style.display = 'none';
-        }, 500); // Matches CSS transition
-    }
-});
-
 document.addEventListener('DOMContentLoaded', () => {
     console.log("DOM fully loaded and parsed for volumes page");
     const params = new URLSearchParams(window.location.search);
@@ -27,26 +13,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (manga) {
         console.log("Found manga data:", manga);
+
         // Set wallpaper
         if (manga.wallpaper) {
             const wallpaperBg = document.getElementById('manga-wallpaper-bg');
-            if(wallpaperBg) {
+            if (wallpaperBg) {
                 wallpaperBg.style.backgroundImage = `url(${manga.wallpaper})`;
-                // Add class to make it visible with transition
-                setTimeout(() => {
-                    wallpaperBg.classList.add('visible');
-                }, 100); // Small delay to ensure transition is applied
+                setTimeout(() => wallpaperBg.classList.add('visible'), 100);
                 console.log(`Set wallpaper for ${manga.nome}`);
             }
         }
 
+        // Populate header and sidebar
         document.getElementById('page-title').textContent = manga.nome;
+        document.getElementById('header-manga-title').textContent = manga.nome;
         document.getElementById('manga-title').textContent = manga.nome;
         document.getElementById('manga-synopsis').textContent = manga.sinopsis;
-        console.log("Set manga title and synopsis");
+
+        const coverImage = document.getElementById('manga-cover-image');
+        if (coverImage && manga.volumes.length > 0 && manga.volumes[0].imagem) {
+            coverImage.src = manga.volumes[0].imagem;
+            coverImage.alt = `Capa de ${manga.nome}`;
+        } else if (coverImage) {
+            coverImage.style.display = 'none'; // Hide if no image
+        }
 
         const volumesContainer = document.getElementById('volumes-container');
-         if (!volumesContainer) {
+        if (!volumesContainer) {
             console.error("Error: '#volumes-container' element not found!");
             return;
         }
@@ -54,29 +47,24 @@ document.addEventListener('DOMContentLoaded', () => {
         function renderVolumes(filter = 'all') {
             console.log(`Rendering volumes with filter: ${filter}`);
             volumesContainer.innerHTML = '';
-
             let filteredVolumes = manga.volumes;
 
             if (filter !== 'all') {
-                console.log(`Filtering by status: ${filter}`);
                 filteredVolumes = filteredVolumes.filter(v => v.status === filter);
             }
-            console.log("Filtered volumes:", filteredVolumes);
 
             if (filteredVolumes.length === 0) {
-                console.log("No volumes found to render for this filter.");
                 volumesContainer.innerHTML = `<p class="no-results">Nenhum volume correspondente encontrado.</p>`;
                 return;
             }
 
             filteredVolumes.forEach(volume => {
-                console.log("Creating card for volume:", volume.volume);
                 const card = document.createElement('div');
                 card.className = `card ${volume.status.toLowerCase()}`;
-
+                
                 const imageContainer = document.createElement('div');
                 imageContainer.className = 'card-image-container';
-
+                
                 const img = document.createElement('img');
                 img.src = volume.imagem;
                 img.alt = `Capa do ${volume.volume} de ${manga.nome}`;
@@ -100,23 +88,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 volumesContainer.appendChild(card);
             });
-            console.log("Finished rendering all volume cards.");
         }
 
-        console.log("Performing initial render of volumes.");
         renderVolumes();
 
         const filterButtons = document.querySelectorAll('.filter-button');
-        console.log("Found filter buttons:", filterButtons);
         filterButtons.forEach(button => {
             button.addEventListener('click', (e) => {
-                console.log(`Filter button clicked: ${e.target.dataset.filter}`);
                 filterButtons.forEach(btn => btn.classList.remove('active'));
                 e.target.classList.add('active');
                 renderVolumes(e.target.dataset.filter);
             });
         });
-         console.log("Filter button event listeners added.");
 
     } else {
         console.error("Manga not found!");
@@ -124,4 +107,3 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('manga-title').textContent = 'Não encontrado';
     }
 });
-console.log("volumes.js script finished");
