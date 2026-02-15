@@ -1,8 +1,11 @@
 import data from './data.js';
 import { animateCardClick } from './animation.js';
+import { setupInitialLoadingAnimation } from './initial-loading.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    initializeApp();
+    // Start the initial loading animation and pass the main app initialization
+    // function as a callback.
+    setupInitialLoadingAnimation(initializeApp);
 });
 
 function initializeApp() {
