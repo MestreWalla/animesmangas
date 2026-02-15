@@ -1,38 +1,39 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Coleção de Mangás</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <title>Mangá Collection</title>
 </head>
-<body>
+<body data-theme="dark">
+
+    <div class="wallpaper-bg" id="main-wallpaper"></div>
+
     <header>
         <div class="header-content">
-            <div></div> <!-- Spacer for grid alignment -->
-            <h1>Minha Coleção de Mangás</h1>
-            <div class="controls">
-                <div class="filter-options">
-                    <button class="filter-button active" data-filter="all">Todos</button>
-                    <button class="filter-button" data-filter="Completo">Completos</button>
-                    <button class="filter-button" data-filter="Incompleto">Incompletos</button>
-                </div>
-                <input type="text" id="search-bar" placeholder="Buscar por título...">
-                <button id="theme-toggle" class="theme-button">
-                    <span class="theme-icon"></span>
-                </button>
-            </div>
+            <h1>Minha Coleção</h1>
+            <button class="theme-button" aria-label="Mudar tema">
+                <div class="theme-icon"></div>
+            </button>
         </div>
     </header>
+
     <main>
-        <div class="card-grid">
-            <!-- Cards will be dynamically added here by JavaScript -->
+        <div class="main-container">
+            <div class="filter-controls-container">
+                 <input type="text" id="search-bar" placeholder="Buscar por título...">
+            </div>
+            <div id="manga-grid" class="card-grid">
+                <!-- Cards dos mangás serão inseridos aqui -->
+            </div>
         </div>
     </main>
-    <script defer type="module" src="js/main.js"></script>
-    <script defer src="js/theme.js"></script>
+
+    <script src="js/theme.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
