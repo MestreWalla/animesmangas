@@ -29,11 +29,15 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Found manga data:", manga);
         // Set wallpaper
         if (manga.wallpaper) {
-            const wallpaperBg = document.createElement('div');
-            wallpaperBg.className = 'wallpaper-bg';
-            wallpaperBg.style.backgroundImage = `url(${manga.wallpaper})`;
-            document.body.prepend(wallpaperBg);
-            console.log(`Set wallpaper for ${manga.nome}`);
+            const wallpaperBg = document.getElementById('manga-wallpaper-bg');
+            if(wallpaperBg) {
+                wallpaperBg.style.backgroundImage = `url(${manga.wallpaper})`;
+                // Add class to make it visible with transition
+                setTimeout(() => {
+                    wallpaperBg.classList.add('visible');
+                }, 100); // Small delay to ensure transition is applied
+                console.log(`Set wallpaper for ${manga.nome}`);
+            }
         }
 
         document.getElementById('page-title').textContent = manga.nome;
@@ -61,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (filteredVolumes.length === 0) {
                 console.log("No volumes found to render for this filter.");
-                volumesContainer.innerHTML = `<p class=\"no-results\">Nenhum volume correspondente encontrado.</p>`;
+                volumesContainer.innerHTML = `<p class="no-results">Nenhum volume correspondente encontrado.</p>`;
                 return;
             }
 
@@ -116,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     } else {
         console.error("Manga not found!");
-        mainContent.innerHTML = `<p class=\"no-results\">Manga não encontrado. Por favor, retorne à <a href=\"index.html\">página inicial</a>.</p>`;
+        mainContent.innerHTML = `<p class="no-results">Manga não encontrado. Por favor, retorne à <a href="index.html">página inicial</a>.</p>`;
         document.getElementById('manga-title').textContent = 'Não encontrado';
     }
 });
