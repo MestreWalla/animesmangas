@@ -8,7 +8,8 @@ Este é um aplicativo da web para gerenciar uma coleção de mangás. O aplicati
 - **Layout:** O layout é responsivo e se adapta a diferentes tamanhos de tela. Em telas maiores, a visualização detalhada do mangá tem uma barra lateral e uma área de conteúdo. Em telas menores, a barra lateral e o conteúdo são empilhados.
 - **Animações:**
     - **Animação de carregamento inicial:** Uma tela de carregamento é exibida quando o aplicativo é iniciado pela primeira vez, com uma grade de capas de mangá que aparecem gradualmente.
-    - **Animação de transição de elemento compartilhado:** Ao clicar em um card de mangá, a imagem do card se transforma na imagem de capa na tela de carregamento.
+    - **Animação de transição de elemento compartilhado:** Ao clicar em um card de mangá, a imagem do card se transforma na imagem de capa na tela de carregamento. A proporção de tela de 2/3 é consistente em todas as imagens de capa para evitar distorções.
+    - **Animação de carregamento de volumes:** Ao clicar em um mangá, um pop-up de carregamento é exibido com tamanho fixo (80% da tela), mostrando uma grade de capas de volumes que aparecem gradualmente. A grade exibe no máximo 10 capas para manter a interface limpa e não tem uma barra de rolagem.
 
 ## Funcionalidades
 
@@ -20,8 +21,5 @@ Este é um aplicativo da web para gerenciar uma coleção de mangás. O aplicati
 
 ## Plano de Alterações Atuais
 
-- **Restaurar animação de carregamento inicial:**
-    - Recriar o arquivo `js/initial-loading.js` com a lógica para a animação de carregamento inicial.
-    - Adicionar a estrutura HTML necessária para a sobreposição de carregamento em `index.html`.
-    - Adicionar os estilos CSS para a sobreposição de carregamento e os efeitos de animação em `css/style.css`.
-    - Modificar o arquivo `js/main.js` para chamar a função de animação de carregamento antes de inicializar o aplicativo principal.
+- **Manter a proporção da imagem da capa:**
+    - Modificar o arquivo `css/style.css` para usar a propriedade `aspect-ratio: 2 / 3` e `object-fit: cover` para todas as imagens de capa, garantindo que a proporção seja mantida e a animação seja suave.

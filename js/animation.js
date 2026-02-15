@@ -27,12 +27,25 @@ function createLoadingScreen(categoria) {
     const sinopsis = document.createElement('p');
     sinopsis.textContent = categoria.sinopsis || 'Sinopse não disponível.';
 
-    const spinner = document.createElement('div');
-    spinner.className = 'loading-spinner';
+    // Create the grid for volume covers
+    const volumesGrid = document.createElement('div');
+    volumesGrid.className = 'loading-volumes-grid';
+
+    // Populate the grid with a limited number of volume covers
+    const volumesToShow = categoria.volumes.slice(0, 10);
+    volumesToShow.forEach((volume, index) => {
+        if (volume.imagem) {
+            const volumeItem = document.createElement('div');
+            volumeItem.className = 'loading-volume-item';
+            volumeItem.style.backgroundImage = `url(${volume.imagem})`;
+            volumeItem.style.animationDelay = `${index * 0.07}s`; // Stagger the animation
+            volumesGrid.appendChild(volumeItem);
+        }
+    });
 
     info.appendChild(title);
     info.appendChild(sinopsis);
-    info.appendChild(spinner);
+    info.appendChild(volumesGrid); // Add the grid instead of the spinner
     loadingContent.appendChild(cover);
     loadingContent.appendChild(info);
     loadingCard.appendChild(loadingContent);

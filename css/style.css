@@ -99,7 +99,7 @@ body {
 
 .loading-cover-item {
     width: 100%;
-    padding-top: 140%; /* Maintain aspect ratio */
+    aspect-ratio: 2 / 3;
     background-size: cover;
     background-position: center;
     border-radius: 8px;
@@ -349,7 +349,6 @@ main {
 
 .manga-cover-image {
     width: 100%;
-    height: auto;
     aspect-ratio: 2 / 3;
     object-fit: cover;
     display: block;
@@ -479,8 +478,8 @@ main {
 
 .card-image-container {
     width: 100%;
-    padding-top: 140%;
     position: relative;
+    aspect-ratio: 2 / 3;
 }
 
 .card-image {
@@ -545,9 +544,10 @@ main {
 }
 
 .loading-card {
-    width: 90%;
-    max-width: 800px;
-    height: auto;
+    width: 80vw;
+    height: 80vh;
+    max-width: 1000px;
+    max-height: 700px;
     background-size: cover;
     background-position: center;
     border-radius: 16px;
@@ -557,13 +557,14 @@ main {
 
 .loading-content {
     display: flex;
+    height: 100%;
     padding: 40px;
     background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.8));
 }
 
 .loading-cover {
-    width: 200px;
-    height: 280px;
+    width: 30%;
+    aspect-ratio: 2 / 3;
     object-fit: cover;
     border-radius: 16px;
     flex-shrink: 0;
@@ -573,32 +574,45 @@ main {
 .loading-info {
     color: white;
     padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     transition: opacity 0.3s ease-in;
+    overflow: hidden;
 }
 
 .loading-info h2 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     margin-bottom: 15px;
 }
 
 .loading-info p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.6;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
+    max-height: 200px; 
+    overflow-y: auto;
+    padding-right: 15px;
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+/* New Loading Volumes Grid */
+.loading-volumes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+    gap: 10px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255,255,255,0.2);
 }
 
-.loading-spinner {
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    border-top: 4px solid #fff;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
+.loading-volume-item {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px;
+    opacity: 0;
+    transform: scale(0.8);
+    animation: cover-fade-in 0.6s forwards;
 }
 
 .flying-clone {
@@ -638,6 +652,30 @@ main {
     }
     #collection-sidebar .manga-info {
         width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .loading-content {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+    .loading-cover {
+        width: 40%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    .loading-info {
+        padding-left: 0;
+        text-align: center;
+    }
+    .loading-info p {
+        max-height: 150px;
+        padding-right: 0;
+    }
+    .loading-info h2 {
+        font-size: 1.8rem;
     }
 }
 
