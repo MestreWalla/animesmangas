@@ -31,6 +31,7 @@ function createCards(filter = 'all', searchTerm = '') {
     filteredData.forEach(categoria => {
         const card = document.createElement('div');
         card.className = 'card';
+        card.dataset.wallpaper = categoria.wallpaper; // Add wallpaper data to card
 
         card.addEventListener('click', (e) => {
             const originImage = e.currentTarget.querySelector('.card-image');
@@ -49,11 +50,13 @@ function createCards(filter = 'all', searchTerm = '') {
             document.body.appendChild(loadingOverlay);
             
             const destinationImage = loadingOverlay.querySelector('.loading-cover');
-            const destinationRect = destinationImage.getBoundingClientRect();
+            let destinationRect;
 
             requestAnimationFrame(() => {
                 cardGrid.classList.add('grid-faded');
                 loadingOverlay.classList.add('visible');
+                
+                destinationRect = destinationImage.getBoundingClientRect();
 
                 flyingClone.style.top = `${destinationRect.top}px`;
                 flyingClone.style.left = `${destinationRect.left}px`;
@@ -121,7 +124,9 @@ function createLoadingScreen(categoria) {
 
     const loadingCard = document.createElement('div');
     loadingCard.className = 'loading-card';
-    loadingCard.style.backgroundImage = `url('${categoria.wallpaper}')`;
+    if (categoria.wallpaper) {
+        loadingCard.style.backgroundImage = `url('${categoria.wallpaper}')`;
+    }
 
     const loadingContent = document.createElement('div');
     loadingContent.className = 'loading-content';
@@ -157,6 +162,27 @@ function createLoadingScreen(categoria) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Create and prepend wallpaper element
+    const wallpaper = document.createElement('div');
+    wallpaper.className = 'main-wallpaper';
+    document.body.prepend(wallpaper);
+
+    // Event Delegation for Wallpaper Hover Effect
+    cardGrid.addEventListener('mouseover', (event) => {
+        const card = event.target.closest('.card');
+        if (card && card.dataset.wallpaper) {
+            wallpaper.style.backgroundImage = `url(${card.dataset.wallpaper})`;
+            wallpaper.classList.add('visible');
+        }
+    });
+
+    cardGrid.addEventListener('mouseout', (event) => {
+        const card = event.target.closest('.card');
+        if (card) {
+            wallpaper.classList.remove('visible');
+        }
+    });
+
     createCards();
 
     const searchBar = document.getElementById('search-bar');

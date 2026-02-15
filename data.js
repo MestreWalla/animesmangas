@@ -70,6 +70,11 @@ export default {
             "wallpaper": "https://4kwallpapers.com/images/wallpapers/frieren-beyond-5120x2880-15157.jpeg",
             "volumes": [
                 {
+                    "volume": "Novel 01",
+                    "status": "Adquirido",
+                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_kvg222ldql3m35l3is7qbu4h3j/-S897-FWEBP"
+                },
+                {
                     "volume": "Volume 01",
                     "status": "Adquirido",
                     "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_kblh3ff2kp6afdr1i8cis0b430/-S897-FWEBP"
@@ -133,6 +138,21 @@ export default {
                     "volume": "Volume 13",
                     "status": "Adquirido",
                     "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_29c1s4th553br51sjv2ssgru7e/-S897-FWEBP"
+                },
+                {
+                    "volume": "Volume 14",
+                    "status": "Falta",
+                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_9ehdd21s117c5ammeni99u650a/-S897-FWEBP"
+                },
+                {
+                    "volume": "Volume 15",
+                    "status": "Falta",
+                    "imagem": "https://static.wikia.nocookie.net/frieren/images/4/4e/Volume_15.png"
+                },
+                {
+                    "volume": "Booklet Fanfarra para Frieren",
+                    "status": "Adquirido",
+                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_ckgfvgqse54ht4h2rcpqsf0b74/-S897-FWEBP"
                 }
             ]
         },
@@ -185,7 +205,7 @@ export default {
                     "status": "Adquirido",
                     "imagem": "https://m.media-amazon.com/images/I/812IOOAkM1L._AC_UF1000,1000_QL80_.jpg"
                 }
-            ],
+            ]
         },
         {
             "nome": "Mirai Nikki",
@@ -302,6 +322,29 @@ export default {
                     "imagem": "https://i0.wp.com/blogbbm.com/wp-content/uploads/2025/11/06.jpg?fit=720%2C1024&ssl=1"
                 }
             ]
+        },
+        {
+            "nome": "As Viajantes do Fim",
+            "editora": "Baú Editora",
+            "sinopsis": "Em um mundo onde a civilização se reduziu a ruínas, Chito e Yuuri se recusam a deixar o vazio consumi-las. Com sua fiel Kettenkrad (uma semilagarta com roda de motocicleta) como companheira inseparável, elas percorrem os restos fantasmagóricos de uma vida que já ficou para trás, buscando comida, combustível e a menor centelha de esperança. Cada dia é uma luta contra o desespero, mas juntas, elas encontram conforto nas menores alegrias: o calor de uma sopa compartilhada, a emoção de descobrir relíquias esquecidas e os momentos silenciosos de conexão que as lembram do que significa realmente viver. Em um mundo desolado, o vínculo entre elas se torna sua luz — provando que, mesmo em meio às ruínas, é possível encontrar sentido no amor e na alegria que criam juntas.",
+            "wallpaper": "https://i0.wp.com/www.otakupt.com/wp-content/uploads/2025/11/As-Viajantes-do-Fim-Vol.-3_Capa.jpg?fit=1920%2C1080&ssl=1",
+            "volumes": [
+                {
+                    "volume": "Volume 01",
+                    "status": "Adquirido",
+                    "imagem": "https://baueditora.com.br/wp-content/uploads/2025/01/capa_as_viajantes_do_fim_1_v5.png"
+                },
+                {
+                    "volume": "Volume 02",
+                    "status": "Adquirido",
+                    "imagem": "https://baueditora.com.br/wp-content/uploads/2025/06/capa_APROVADA_as_viajantes_do_fim_2.jpg"
+                },
+                {
+                    "volume": "Volume 03",
+                    "status": "Adquirido",
+                    "imagem": "https://baueditora.com.br/wp-content/uploads/2025/11/capa_APROVADA_as_viajantes_do_fim_3-600x869.jpg"
+                }
+            ]
         }
     ]
-};
+}

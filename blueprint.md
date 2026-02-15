@@ -2,47 +2,43 @@
 
 ## Overview
 
-This application allows users to browse and manage their manga collection. Users can view all mangas, filter them by "Acquired" or "Missing" status, and search for specific series by name. The interface is designed to be a modern, visually-rich, and intuitive experience.
+This application allows users to browse and manage their manga collection. Users can view all mangas, filter them by status (All, Complete, Incomplete), and search for specific series by name. The interface is designed to be a modern, visually-rich, and intuitive experience with a sophisticated dark theme.
 
 ---
 
-## Current Implemented Design
+## Current Implemented Design & Features
 
-*   **Layout:** A clean, responsive, and uniform grid of cards.
-*   **Styling:** A sophisticated dark theme with a subtle noise texture.
-*   **Functionality:**
+*   **Layout:** A responsive grid of manga cards.
+*   **Styling:** A sleek dark theme with clear typography and accent colors.
+*   **Core Functionality:**
     *   Dynamic card generation from a `data.js` file.
-    *   Filtering by status (All, Acquired, Missing) and searching by title.
+    *   Client-side filtering by status (`Todos`, `Completos`, `Incompletos`).
+    *   Real-time search by manga title.
     *   Light/dark theme switching.
-    *   An elegant loading screen with a wallpaper background, side-by-side cover and synopsis, and smooth fade-in animations.
+*   **Dynamic Wallpaper Background:** On the main page, the background subtly changes to a blurred, series-specific wallpaper when the user hovers over a manga card, creating an immersive browsing experience.
+*   **Signature Feature: Shared Element Transition Loading Screen:**
+    *   When a user clicks on a manga, the card's cover image animates smoothly, appearing to "fly" and transform into the larger cover image on a detailed loading screen.
+    *   This loading screen presents the manga's cover, title, synopsis, and a loading spinner against a blurred wallpaper of the series.
+    *   After a brief moment, the application navigates to the `volumes.html` page for that series.
 
 ---
 
-## **New Feature: Shared Element Transition**
+## Last Action: Restored Dynamic Wallpaper Background
 
-This feature creates a seamless and professional transition where the manga cover image appears to move from the grid and transform into the cover image on the loading screen.
+This plan outlines the steps taken to re-implement the dynamic background effect on the main collection page.
 
-### 1. **Visual & Functional Goals**
-*   **Trigger:** When a user clicks on a manga card.
-*   **Animation (The "Magic Move")**:
-    1.  Get the position of the clicked card's image (`.card-image`).
-    2.  Create a clone of this image and position it exactly over the original using `position: fixed`.
-    3.  Fade out the main card grid.
-    4.  Simultaneously, fade in the loading overlay's blurred background.
-    5.  The image clone then animates (transitions `top`, `left`, `width`, `height`, `border-radius`) from its starting position to the final position of the cover image within the loading screen.
-    6.  Once the image arrives at its destination, the rest of the loading screen content (synopsis, title, spinner) fades in.
-    7.  The image clone is removed, revealing the actual `.loading-cover` element underneath.
-*   **Transition:** After a delay, the application navigates to the `volumes.html` page.
+### 1. **Visual & Functional Goal**
 
-### 2. **Actionable Steps**
+*   **Objective:** To create an immersive browsing experience by having the page background dynamically update to reflect the manga the user is currently hovering over.
+
+### 2. **Actionable Steps Taken**
 
 1.  **JavaScript (`main.js`):**
-    *   The card's click event listener will be completely rewritten to orchestrate this complex animation.
-    *   It will create the "flying clone" of the image and append it to the body.
-    *   It will dynamically create the loading overlay and its contents but keep them initially invisible.
-    *   Crucially, it will **calculate** the final destination (position and size) of the cover image *before* the animation starts.
-    *   CSS classes and `setTimeout` will be used to sequence the animation steps: fade out grid, fade in overlay, start image transition, fade in text content, and finally, navigate.
+    *   A `div` with the class `main-wallpaper` is now programmatically prepended to the `<body>` when the DOM is loaded.
+    *   A `data-wallpaper` attribute, containing the URL to the manga's wallpaper, was added to each card during its creation.
+    *   Event delegation is now used on the `card-grid`. A `mouseover` event on a card triggers the update of the `.main-wallpaper` element's `backgroundImage` and adds the `.visible` class to fade it in.
+    *   A `mouseout` event removes the `.visible` class, fading the wallpaper out.
+
 2.  **CSS (`style.css`):**
-    *   A new class, `.flying-clone`, will be created to style the animating image. This class will define its `position`, `z-index`, and smooth `transition` properties.
-    *   The `.loading-overlay` and `.loading-content` styles will be adjusted to have an initial `opacity` of 0 to allow them to be faded in at the correct time.
-    *   The card grid will have a fade-out transition.
+    *   Added the `.main-wallpaper` style to fix the element to the background, apply a blur and brightness filter, and set its initial opacity to 0.
+    *   Added the `.main-wallpaper.visible` style to change the opacity to 0.2, creating a smooth fade-in effect.

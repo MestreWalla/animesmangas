@@ -1,22 +1,38 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
+console.log("theme.js script started");
 
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+function applyTheme(theme) {
+    console.log(`Applying theme: ${theme}`);
+    document.body.dataset.theme = theme;
+    localStorage.setItem('theme', theme);
+    console.log("Theme applied and saved to localStorage");
+}
 
-    if (savedTheme) {
-        body.dataset.theme = savedTheme;
-    } else if (prefersDark) {
-        body.dataset.theme = 'dark';
+function initializeTheme() {
+    console.log("Initializing theme");
+    // Apply theme immediately to avoid FOUC
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    console.log(`Found saved theme: ${savedTheme}`);
+    applyTheme(savedTheme);
+
+    // Add event listener after the DOM is ready
+    const themeButton = document.querySelector('.theme-button');
+    if (themeButton) {
+        console.log("Found .theme-button element");
+        themeButton.addEventListener('click', () => {
+            const newTheme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+            console.log(`Theme button clicked, changing to ${newTheme}`);
+            applyTheme(newTheme);
+        });
+         console.log("Theme button event listener added.");
     } else {
-        body.dataset.theme = 'light';
+        console.warn("Warning: '.theme-button' element not found!");
     }
+}
 
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = body.dataset.theme;
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        body.dataset.theme = newTheme;
-        localStorage.setItem('theme', newTheme);
-    });
+// Run the initialization code when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOM fully loaded, initializing theme.");
+    initializeTheme();
 });
+
+console.log("theme.js script finished");
