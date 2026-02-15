@@ -23,12 +23,24 @@
     </header>
 
     <main>
-        <div class="main-container">
-            <div class="filter-controls-container">
-                 <input type="text" id="search-bar" placeholder="Buscar por título...">
-            </div>
-            <div id="manga-grid" class="card-grid">
-                <!-- Cards dos mangás serão inseridos aqui -->
+        <div class="manga-detail-container">
+            <aside class="manga-detail-sidebar" id="collection-sidebar">
+                <div class="sidebar-content">
+                    <div class="manga-info">
+                        <h2 id="manga-title">Estatísticas</h2>
+                        <div id="collection-stats">
+                            <!-- As estatísticas serão inseridas aqui -->
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <div class="manga-detail-content">
+                <div class="filter-controls-container">
+                    <input type="text" id="search-bar" placeholder="Buscar por título...">
+                </div>
+                <div id="manga-grid" class="card-grid">
+                    <!-- Cards dos mangás serão inseridos aqui -->
+                </div>
             </div>
         </div>
     </main>

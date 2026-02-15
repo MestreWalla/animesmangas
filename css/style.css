@@ -182,6 +182,16 @@ main {
     color: var(--text-color);
 }
 
+#search-bar {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--background-color-tertiary);
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
 .filter-controls {
     display: flex;
     gap: 10px;
@@ -356,8 +366,14 @@ main {
     .header-manga-title {
         display: block; 
     }
+    #collection-sidebar .manga-info #manga-title { 
+        display: block;
+    }
     .manga-info #manga-title {
         display: none; 
+    }
+    #collection-sidebar .manga-info {
+        width: 100%;
     }
 }
 

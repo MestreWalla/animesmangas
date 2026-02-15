@@ -3,7 +3,31 @@ import data from './data.js';
 document.addEventListener('DOMContentLoaded', () => {
     const mangaGrid = document.getElementById('manga-grid');
     const searchBar = document.getElementById('search-bar');
+    const collectionStats = document.getElementById('collection-stats');
     const mainWallpaper = document.getElementById('main-wallpaper');
+
+    function calculateStats() {
+        const totalMangas = data.categorias.length;
+        let totalVolumes = 0;
+        let acquiredVolumes = 0;
+
+        data.categorias.forEach(cat => {
+            totalVolumes += cat.volumes.length;
+            acquiredVolumes += cat.volumes.filter(v => v.status === 'Adquirido').length;
+        });
+
+        return { totalMangas, totalVolumes, acquiredVolumes };
+    }
+
+    function displayStats() {
+        const stats = calculateStats();
+        if (collectionStats) {
+            collectionStats.innerHTML = `
+                <p><strong>Títulos na Coleção:</strong> ${stats.totalMangas}</p>
+                <p><strong>Volumes Adquiridos:</strong> ${stats.acquiredVolumes} de ${stats.totalVolumes}</p>
+            `;
+        }
+    }
 
     function createLoadingScreen(categoria) {
         const loadingOverlay = document.createElement('div');
@@ -133,20 +157,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Event Listeners
-    searchBar.addEventListener('input', (e) => createCards(e.target.value));
+    if(searchBar) {
+        searchBar.addEventListener('input', (e) => createCards(e.target.value));
+    }
 
-    mangaGrid.addEventListener('mouseover', (e) => {
-        const card = e.target.closest('.card');
-        if (card && card.dataset.wallpaper) {
-            mainWallpaper.style.backgroundImage = `url(${card.dataset.wallpaper})`;
-            mainWallpaper.classList.add('visible');
-        }
-    });
+    if(mangaGrid) {
+        mangaGrid.addEventListener('mouseover', (e) => {
+            const card = e.target.closest('.card');
+            if (card && card.dataset.wallpaper) {
+                mainWallpaper.style.backgroundImage = `url(${card.dataset.wallpaper})`;
+                mainWallpaper.classList.add('visible');
+            }
+        });
 
-    mangaGrid.addEventListener('mouseout', () => {
-        mainWallpaper.classList.remove('visible');
-    });
+        mangaGrid.addEventListener('mouseout', () => {
+            mainWallpaper.classList.remove('visible');
+        });
+    }
 
     // Initial Load
     createCards();
+    displayStats();
 });
