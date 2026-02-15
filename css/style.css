@@ -89,6 +89,7 @@ body {
 }
 
 .loading-cover-grid {
+    padding: 50px;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     gap: 10px;
