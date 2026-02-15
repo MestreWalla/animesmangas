@@ -705,4 +705,52 @@ main {
     .manga-cover-image {
         width: 100%;
     }
+    .loading-cover-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        padding: 20px;
+    }
+
+    .loading-text {
+        font-size: 1rem;
+    }
+
+    .loading-card {
+        width: 90vw;
+        height: 90vh;
+    }
+
+    .loading-cover {
+        width: 50%;
+    }
+
+    .loading-info h2 {
+        font-size: 1.5rem;
+    }
+
+    .loading-info p {
+        max-height: 120px;
+    }
+
+    .loading-volumes-grid {
+        grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+        gap: 8px;
+    }
+}
+
+@media (max-width: 400px) {
+    .loading-cover-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+        padding: 15px;
+    }
+
+    .loading-card {
+        width: 95vw;
+        height: 95vh;
+    }
+
+    .loading-cover {
+        width: 60%;
+    }
 }
