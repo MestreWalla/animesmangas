@@ -345,6 +345,69 @@ export default {
                     "imagem": "https://baueditora.com.br/wp-content/uploads/2025/11/capa_APROVADA_as_viajantes_do_fim_3-600x869.jpg"
                 }
             ]
+        },
+        {
+            "nome": "Witch Hat Atelier",
+            "editora": "Panini",
+            "sinopsis": "Coco, uma garota de um vilarejo pequeno, sempre foi fascinada pela magia, mas em um mundo onde apenas aqueles que nascem com o dom podem se tornar bruxos, ela precisa abandonar seu sonho. No entanto, sua vida muda completamente no dia em que ela testemunha secretamente o bruxo Qifrey realizar um feitiço e descobre a verdadeira natureza da magia. Após um trágico acidente causado por sua curiosidade, Coco é acolhida por Qifrey como sua aprendiz, mergulhando em um mundo de mistérios, dedicação e encanto.",
+            "wallpaper": "https://images.tcdn.com.br/img/img_prod/690858/manga_witch_hat_atelier_vol_01_panini_10769_1_721d03c62cf31be4fc7809930f340f6c.jpg",
+            "volumes": [
+                {
+                    "volume": "Volume 01",
+                    "status": "Adquirido",
+                    "imagem": "https://panini.com.br/media/catalog/product/a/m/amaia001r5_0.jpg?optimize=medium&bg-color=255,255,255&fit=bounds&height=897&width=960&canvas=960:897"
+                },
+                {
+                    "volume": "Volume 02",
+                    "status": "Adquirido",
+                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_jjnk0gbltp0n3b341lbkppvn0v/-S897-FWEBP"
+                },
+                {
+                    "volume": "Volume 03",
+                    "status": "Falta",
+                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_2q6oee6m3973d9ql1b8ge5q81f/-S897-FWEBP"
+                },
+                {
+                    "volume": "Volume 04",
+                    "status": "Adquirido",
+                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_823oi48gjp46r5d90u7ovjli75/-S897-FWEBP"
+                },
+                {
+                    "volume": "Volume 05",
+                    "status": "Falta",
+                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_ija2dvvbh13b98glfd8a9rn07n/-S897-FWEBP"
+                },
+                {
+                    "volume": "Volume 06",
+                    "status": "Falta",
+                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_456ardsnfh65511l3t1dbnmr4t/-S897-FWEBP"
+                },
+                {
+                    "volume": "Volume 07",
+                    "status": "Falta",
+                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_5c5efut5q532hcaa788kia5k1i/-S897-FWEBP"
+                },
+                {
+                    "volume": "Volume 08",
+                    "status": "Falta",
+                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_i97eqni3290th288c14l9j9o31/-S897-FWEBP"
+                },
+                {
+                    "volume": "Volume 09",
+                    "status": "Adquirido",
+                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_9rsbf7emqt0178dj4v2bhtuv0l/-S897-FWEBP"
+                },
+                {
+                    "volume": "Volume 10",
+                    "status": "Falta",
+                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_saamaq1qnl1sn855vn7gs1ub23/-S897-FWEBP"
+                },
+                {
+                    "volume": "Volume 11",
+                    "status": "Adquirido",
+                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_qq11i6htct30td9892lv31101u/-S897-FWEBP"
+                }
+            ]
         }
     ]
 }
