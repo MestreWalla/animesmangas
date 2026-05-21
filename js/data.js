@@ -350,7 +350,7 @@ export default {
             "nome": "Witch Hat Atelier",
             "editora": "Panini",
             "sinopsis": "Coco, uma garota de um vilarejo pequeno, sempre foi fascinada pela magia, mas em um mundo onde apenas aqueles que nascem com o dom podem se tornar bruxos, ela precisa abandonar seu sonho. No entanto, sua vida muda completamente no dia em que ela testemunha secretamente o bruxo Qifrey realizar um feitiço e descobre a verdadeira natureza da magia. Após um trágico acidente causado por sua curiosidade, Coco é acolhida por Qifrey como sua aprendiz, mergulhando em um mundo de mistérios, dedicação e encanto.",
-            "wallpaper": "https://images.tcdn.com.br/img/img_prod/690858/manga_witch_hat_atelier_vol_01_panini_10769_1_721d03c62cf31be4fc7809930f340f6c.jpg",
+            "wallpaper": "https://images7.alphacoders.com/140/thumb-1920-1407910.png",
             "volumes": [
                 {
                     "volume": "Volume 01",
@@ -406,6 +406,31 @@ export default {
                     "volume": "Volume 11",
                     "status": "Adquirido",
                     "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_qq11i6htct30td9892lv31101u/-S897-FWEBP"
+                },
+                {
+                    "volume": "Volume 12",
+                    "status": "Falta",
+                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_bgtissnfjd4efc5pua2a0us60a/-S897-FWEBP"
+                },
+                {
+                    "volume": "Volume 13",
+                    "status": "Falta",
+                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_ms085774ah3cl9sm9dcr9q5b2p/-S897-FWEBP"
+                },
+                {
+                    "volume": "Volume 14",
+                    "status": "Falta",
+                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_srh9h6foap3mpenscaoaqm8s25/-S897-FWEBP"
+                },
+                {
+                    "volume": "Volume 15",
+                    "status": "Falta",
+                    "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_imr3dn5io526lfluhnstp3lp5b/-S897-f.webp"
+                },
+                {
+                    "volume": "Volume 16",
+                    "status": "Falta",
+                    "imagem": "https://i0.wp.com/blogbbm.com/wp-content/uploads/2026/04/Atelier-of-Witch-Hat-16.jpeg?fit=211%2C300&ssl=1"
                 }
             ]
         }
