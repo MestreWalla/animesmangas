@@ -141,7 +141,7 @@ export default {
                 },
                 {
                     "volume": "Volume 14",
-                    "status": "Falta",
+                    "status": "Adquirido",
                     "imagem": "https://d14d9vp3wdof84.cloudfront.net/image/589816272436/image_9ehdd21s117c5ammeni99u650a/-S897-FWEBP"
                 },
                 {
